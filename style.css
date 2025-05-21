@@ -37,7 +37,7 @@
 }
 
 header {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #00341E;
     position: absolute;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.65);
@@ -52,11 +52,11 @@ header > div > a img {
 }
 
 header input {
-    background-image: url("assets/search.png");
+    background-image: url("assets/search.svg");
     background-repeat: no-repeat;
-    background-position: 9px 9px;
+    background-position: 11px 9px;
     background-size: 25px;
-    border: 1px solid black;
+    border: 1px solid #00341E;
     outline: none;
     width: 100%;
     background-color: #ffffff;
@@ -65,20 +65,18 @@ header input {
     border-radius: 999px;
     font-size: 16px;
     font-family: 'Urbanist', sans-serif;
-    cursor: pointer;
-    transition: all 1s ease-in;
 }
 
 .searchContainer {
     height: 80px;
     padding: 0 20px;
-    border-left: 1px solid black;
+    border-left: 1px solid #00341E;
 }
 
 .cartContainer {
     height: 80px;
     width: 80px;
-    border-left: 1px solid black;
+    border-left: 1px solid #00341E;
     cursor: pointer;
 }
 
@@ -92,19 +90,28 @@ header input {
     background-position: center;
     height: 100vh;
     width: 100%;
-
 }
 
 .hero div {
     margin-bottom: 100px;
-
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .hero h1 {
     color: white;
     font-family: 'Barlow', sans-serif;
-    margin-bottom: 40px;
-    font-size: 40px;
+    font-size: 60px;
+    width: 50%;
+}
+
+.hero p {
+    color: white;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
+    width: 40%;
 }
 
 .hero a {
@@ -118,9 +125,20 @@ header input {
 }
 
 .products {
-    margin: 30px auto;
+    flex-direction: column;
+}
+
+.products h2 {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 30px;
+    margin: 50px 0 20px 0;
+}
+
+.cardContainer {
     flex-wrap: wrap;
+    margin: auto;
     gap: 40px;
+    width: 100%;
 }
 
 .card {
@@ -132,6 +150,7 @@ header input {
 .card img {
     width: 100%;
     object-fit: contain;
+    display: block;
 }
 
 .textCard {
@@ -146,12 +165,14 @@ header input {
 .text {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
+    width: 100%;
 }
 
 .text p:nth-child(1) {
     font-weight: 500;
     font-size: 20px;
+    width: 50%;
 }
 
 .text p:nth-child(2) {
@@ -159,11 +180,50 @@ header input {
     font-size: 24px;
 }
 
-.textCard a {
+.imageContainer {
+    position: relative;
+    overflow: hidden;
+}
+
+.descContainer {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 52, 30, 0.8);
     color: white;
+    transition: top .4s ease;
+}
+
+.card:hover .descContainer {
+    top: 0;
+}
+
+.desc {
+    width: 80%;
+}
+
+.card:hover .desc {
+    transition: all 0.5s ease-out;
+}
+
+.buttonProduct {
+    display: flex;
+    align-items: center;
     padding: 12px 20px;
-    background-color: black;
+    background-color: #00341E;
     border-radius: 999px;
-    text-align: center;
-    display: block;
+    color: white;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.buttonProduct img {
+    width: 35px;
+    filter: invert(100%) sepia(100%) saturate(1000%) hue-rotate(180deg);
 }
