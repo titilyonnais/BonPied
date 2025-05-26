@@ -36,6 +36,11 @@ Divers
     user-select: none;
 }
 
+::selection {
+    background-color: var(--green);
+    color: var(--white);
+}
+
 /*--------------------------------------------------
 Largeurs et colonnes
 ---------------------------------------------------*/
@@ -382,7 +387,7 @@ General
 .banderolle img {
     cursor: pointer;
     position: absolute;
-    top: 7px;
+    top: 5px;
     right: 15px;
     width: 30px;
     filter: invert(100%) sepia(100%) saturate(1000%) hue-rotate(180deg);
@@ -414,8 +419,8 @@ header {
 }
 
 .bagCounter {
-    top: 10px;
-    right: 45px;
+    top: 15px;
+    right: 10px;
     min-width: 30px;
     height: 30px;
     padding: 0 6px;
@@ -448,6 +453,11 @@ header {
 .hero a {
     padding: 18px 30px;
     display: inline-block;
+    transition: transform .2s ease-out;
+}
+
+.hero a:hover {
+    transform: rotateX(15deg) rotateY(10deg) rotateZ(0);
 }
 
 /* Produits */
@@ -467,6 +477,7 @@ header {
 .card img {
     object-fit: contain;
     display: block;
+    border-radius: 30px 30px 0 0;
 }
 
 .textCard {
@@ -478,12 +489,13 @@ header {
 }
 
 .descContainer {
-    top: -100%;
+    top: 100%;
     left: 0;
     height: 100%;
     padding: 8px;
     background-color: rgba(62, 97, 67, 0.9);
     transition: top .4s ease;
+    border-radius: 30px 30px 0 0;
 }
 
 .card:hover .descContainer {
@@ -497,6 +509,12 @@ header {
 .buttonProduct {
     padding: 10px 12px;
     cursor: pointer;
+    transition: transform .2s ease-out;
+}
+
+.buttonProduct:hover {
+    transform: rotateX(15deg) rotateY(10deg) rotateZ(0);
+    background-color: rgba(62, 97, 67, 0.9);
 }
 
 .buttonProduct img {
@@ -519,13 +537,15 @@ header {
     margin-bottom: 40px;
 }
 
-.avantages div div img {
-    margin-bottom: 20px;
+.avantages img {
+    width: 35px;
+    object-fit: contain;
+    margin-right: 10px;
+    transition: transform .2s ease-out;
 }
 
-.avantages img {
-    width: 50px;
-    object-fit: contain;
+.avantages img:hover {
+    transform: scale(1.2);
 }
 
 /* Services */
@@ -565,9 +585,12 @@ header {
     color: white;
 }
 
-.temoignageCard:nth-child(2) {
-    background-color: transparent;
-    color: black;
+.temoignageCard:nth-child(1) {
+    border-radius: 30px 0 0 30px;
+}
+
+.temoignageCard:nth-child(3) {
+    border-radius: 0 30px 30px 0;
 }
 
 /* Footer */

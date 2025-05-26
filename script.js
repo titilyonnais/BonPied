@@ -1,7 +1,10 @@
+// Chargement du fichier JSON
 fetch('sneakers.json')
     .then(response => response.json())
     .then(data => {
         const container = document.getElementById('cardContainer');
+
+        // Génération des cartes produits
         data.produits.forEach(sneakers => {
             container.innerHTML += `
                 <div class="card large-4">
@@ -16,7 +19,7 @@ fetch('sneakers.json')
                             <p class="w50 weight500 size20">${sneakers.nom}</p>
                             <p class="weight600 size24">${sneakers.price} €</p>
                         </div>
-                        <div class="buttonProduct flex alignCenter bRadiusMax g5 bgGreen cWhite cursorPointer selectNone" id="boutonClic">
+                        <div class="buttonProduct flex alignCenter bRadiusMax g5 bgGreen cWhite cursorPointer selectNone">
                             <img alt="" src="assets/plus.svg">
                             <p>Ajouter au panier</p>
                         </div>
@@ -25,10 +28,26 @@ fetch('sneakers.json')
             `;
         });
 
+        // compteur de clics total
         let count = 0;
         const bagCounter = document.querySelector('.nombreClics');
-        const buttons = document.querySelectorAll('.buttonProduct');
 
+        // Bouton statique (hors JSON)
+        const boutonClic = document.getElementById("boutonClic");
+        if (boutonClic) {
+            boutonClic.addEventListener("click", () => {
+                count++;
+                bagCounter.textContent = count;
+
+                boutonClic.innerHTML = `
+                    <img alt="" src="assets/check.svg">
+                    <p>Ajouté au panier</p>
+                `;
+            });
+        }
+
+        // Boutons produits générés
+        const buttons = document.querySelectorAll('.buttonProduct:not(#boutonClic)');
         buttons.forEach(button => {
             button.addEventListener("click", () => {
                 count++;
@@ -41,50 +60,42 @@ fetch('sneakers.json')
             });
         });
 
-data.services.forEach(sneakers => {
+        // Services
+        data.services.forEach(s => {
             document.getElementById('services').innerHTML += `
                 <div class="servicesCard large-4">
-            <h3 class="size28 weight600 cBlack">${sneakers.nom}</h3>
-            <p class="size20">${sneakers.description}</p>
-        </div>
+                    <h3 class="size24 weight600 cBlack">${s.nom}</h3>
+                    <p>${s.description}</p>
+                </div>
             `;
         });
 
-
-        data.temoignages.forEach(sneakers => {
-            const etoilesPleines = '★'.repeat(sneakers.note);
-            const etoilesVides = '☆'.repeat(5 - sneakers.note);
+        // Témoignages
+        data.temoignages.forEach(t => {
+            const etoilesPleines = '★'.repeat(t.note);
+            const etoilesVides = '☆'.repeat(5 - t.note);
             const etoiles = etoilesPleines + etoilesVides;
 
             document.getElementById('temoignages').innerHTML += `
                 <div class="temoignageCard large-4 flex flexColumn g10">
                     <div class="flex spaceBetween alignCenter">
-                        <p class="size24 weight600">${sneakers.prenom}</p>
+                        <p class="size24 weight600">${t.prenom}</p>
                         <div class="flex">
                             <p class="note weight600 size24">${etoiles}</p>
                         </div>
                     </div>
-                    <p class="size20">${sneakers.typeExperience}</p>
-                    <p>${sneakers.commentaire}</p>
+                    <p class="size20">${t.typeExperience}</p>
+                    <p>${t.commentaire}</p>
                 </div>
             `;
         });
     });
 
-let clics = 0;
-let nombreClics = document.getElementById("nombreClics")
-let boutonClic = document.getElementById("boutonClic")
 
-function comptage() {
-    clics++;
-    nombreClics.textContent = clics;
-}
-
-boutonClic.addEventListener("click", comptage);
-
-
-let croix = document.getElementById("removeBanderolle");
+// Bandeau de livraison
+const croix = document.getElementById("removeBanderolle");
+const banderolle = document.getElementById("banderolle");
 
 croix.addEventListener("click", () => {
-    console.log("Croix cliquée !");
-})
+    banderolle.classList.add("displayNone");
+});
