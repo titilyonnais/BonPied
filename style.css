@@ -19,7 +19,7 @@ Variables
     --gap: 32px;
     --black: #000;
     --white: #fff;
-    --green: #00341E;
+    --green: #3E6143;
 }
 
 /*--------------------------------------------------
@@ -30,6 +30,10 @@ Divers
     min-width: 1200px;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.selectNone {
+    user-select: none;
 }
 
 /*--------------------------------------------------
@@ -222,7 +226,6 @@ h1, h2, h3, h4, h5, h6 {
 
 p, a, input{
     font-family: 'Urbanist', sans-serif;
-    font-size: 20px;
 }
 
 .weight500 {
@@ -231,6 +234,10 @@ p, a, input{
 
 .weight600 {
     font-weight: 600;
+}
+
+.size14 {
+    font-size: 14px;
 }
 
 .size20 {
@@ -362,10 +369,29 @@ Flex
 General
 ---------------------------------------------------*/
 
+.displayNone {
+    display: none;
+}
+
+.banderolle {
+    padding: 10px 0;
+    background-color: var(--green);
+    color: white;
+}
+
+.banderolle img {
+    cursor: pointer;
+    position: absolute;
+    top: 7px;
+    right: 15px;
+    width: 30px;
+    filter: invert(100%) sepia(100%) saturate(1000%) hue-rotate(180deg);
+}
+
 /* Header */
 
 header {
-    background-color: rgba(255, 255, 255, 0.65);
+    background-color: rgb(255, 255, 255);
     backdrop-filter: blur(40px);
     height: 80px;
 }
@@ -375,28 +401,30 @@ header {
     object-fit: contain;
 }
 
-header input {
-    background-image: url("assets/search.svg");
-    background-repeat: no-repeat;
-    background-position: 13px 11px;
-    background-size: 25px;
-    outline: none;
-    padding: 12px 20px 12px 50px;
-}
-
-.searchContainer {
-    height: 80px;
-    padding: 0 20px;
-}
-
 .cartContainer {
     height: 80px;
     width: 80px;
     cursor: pointer;
+    top: 0;
+    right: 0;
 }
 
 .cartContainer img {
-    width: 30px;
+    width: 40px;
+}
+
+.bagCounter {
+    top: 10px;
+    right: 45px;
+    min-width: 30px;
+    height: 30px;
+    padding: 0 6px;
+    line-height: 1;
+}
+
+.bagCounter p {
+    margin: 0;
+    color: var(--white);
 }
 
 /* Hero */
@@ -405,21 +433,31 @@ header input {
     background-image: url("assets/hero.jpg");
     background-size: cover;
     background-position: center;
-    height: 85vh;
+    height: 83vh;
 }
 
-.hero div {
+.hero h1 {
+    margin-bottom: 20px;
+}
+
+.hero > div {
     margin-bottom: 100px;
+    align-items: flex-end;
 }
 
 .hero a {
-    padding: 12px 20px;
+    padding: 18px 30px;
+    display: inline-block;
 }
 
 /* Produits */
 
+.products {
+    margin: 50px auto
+}
+
 .products h2 {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .card {
@@ -444,7 +482,7 @@ header input {
     left: 0;
     height: 100%;
     padding: 8px;
-    background-color: rgba(0, 52, 30, 0.8);
+    background-color: rgba(62, 97, 67, 0.9);
     transition: top .4s ease;
 }
 
@@ -457,18 +495,13 @@ header input {
 }
 
 .buttonProduct {
-    padding: 12px 20px;
+    padding: 10px 12px;
     cursor: pointer;
 }
 
 .buttonProduct img {
-    width: 35px;
+    width: 25px;
     filter: invert(100%) sepia(100%) saturate(1000%) hue-rotate(180deg);
-}
-
-#cardContainer {
-    row-gap: var(--gap);
-    column-gap: var(--gap);
 }
 
 .searchCart {
@@ -478,9 +511,16 @@ header input {
 
 /* Avantages */
 
-.avantages div {
-    gap: var(--gap);
-    margin: 80px 0;
+.avantages {
+    margin: 50px auto;
+}
+
+.avantages h2 {
+    margin-bottom: 40px;
+}
+
+.avantages div div img {
+    margin-bottom: 20px;
 }
 
 .avantages img {
@@ -490,8 +530,12 @@ header input {
 
 /* Services */
 
-.services div {
-    margin: 80px 0;
+.services {
+    margin: 50px auto;
+}
+
+.services h2 {
+    margin-bottom: 40px;
 }
 
 .services h3 {
@@ -500,9 +544,12 @@ header input {
 
 /* Temoignages */
 
-.temoignages img {
-    width: 25px;
-    object-fit: contain;
+.temoignages {
+    margin: 50px auto;
+}
+
+.temoignages h2 {
+    margin-bottom: 40px;
 }
 
 .note {
@@ -510,21 +557,35 @@ header input {
 }
 
 .temoignageCard {
-    margin-bottom: 50px;
+    padding: 20px 40px;
 }
 
-.typeExperience {
-    color: #797979;
+.temoignageCard:nth-child(1), .temoignageCard:nth-child(3) {
+    background-color: var(--green);
+    color: white;
+}
+
+.temoignageCard:nth-child(2) {
+    background-color: transparent;
+    color: black;
 }
 
 /* Footer */
 
-footer > div {
-    padding: 50px 0;
+footer div:nth-child(1) {
+    padding: 30px 0;
+}
+
+footer div:nth-child(1) p {
+    margin-top: 20px;
+}
+
+footer div:nth-child(2) {
+    padding: 20px 0;
 }
 
 footer img {
-    width: 200px;
+    width: 300px;
     object-fit: contain;
 }
 
@@ -539,3 +600,4 @@ footer ul a {
 footer ul a:hover {
     text-decoration: underline;
 }
+

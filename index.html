@@ -9,67 +9,87 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-<header class="flex borderB w100 alignCenter absolute">
+
+<div class="banderolle flex justifyCenter" id="banderolle">
+    <p>Livraison gratuite à partir de 30€ d'achat*</p>
+    <div id="removeBanderolle">
+        <img src="assets/croix.svg" alt="croix">
+    </div>
+</div>
+<header class="flex w100 alignCenter absolute">
     <div class="logo container w100 flex justifyStart">
-        <a href="index.html">
+        <a href="index.html" class="selectNone">
             <img alt="Logo BonPied" src="assets/logo.png">
         </a>
     </div>
-    <div class="flex alignCenter">
-        <div class="searchCart flex alignCenter flexEnd absolute">
-            <div class="searchContainer flex alignCenter justifyCenter borderL">
-                <input aria-label="Rechercher" placeholder="Rechercher" type="text"
-                       class="border w100 bRadiusMax cBlack bgWhite">
+    <div class="flex alignCenter selectNone">
+        <div class="cartContainer flex alignCenter justifyCenter absolute">
+            <div class="bagCounter absolute flex alignCenter justifyCenter bRadiusMax weight600 size14 bgGreen">
+                <p class="nombreClics">0</p>
             </div>
-            <div class="cartContainer flex alignCenter justifyCenter borderL">
-                <img alt="" src="assets/bag.svg">
-            </div>
+            <img alt="" src="assets/bag.svg">
         </div>
     </div>
 </header>
 
 <main>
     <section class="hero flex alignEnd w100">
-        <div class="container flex alignStart flexColumn g30" id="hero">
-            <h1 class="w50 size60 cWhite">BonPied - Sneakers Éco-sourcés à Rennes</h1>
-            <p class="w40 size20 cWhite">Marchez avec style tout en respectant la planète avec BonPied, votre destination de
-                sneakers
-                éco-sourcés
-                à
-                Rennes</p>
-            <a href="" class="weight500 bRadiusMax size20 cBlack bgWhite">Découvrez notre collection responsable</a>
+        <div class="container flex alignEnd" id="hero">
+            <div>
+                <h1 class="w80 size60 cWhite">BonPied - Sneakers Éco-sourcés à Rennes</h1>
+                <p class="w50 size20 cWhite">Marchez avec style tout en respectant la planète avec BonPied, votre destination de
+                    sneakers
+                    éco-sourcés
+                    à
+                    Rennes</p>
+            </div>
+            <div class="w50">
+                <a href="#products" class="weight500 bRadiusMax size20 cBlack bgWhite selectNone">Découvrez notre collection responsable</a>
+            </div>
         </div>
     </section>
 
-    <section class="avantages container flex flexWrap gap">
-        <div class="large-4 flex flexColumn alignCenter size20">
-            <img src="assets/droplets.svg" alt="">
-            <p>Sneakers éco-sourcés fabriquées avec des matériaux durables</p>
-        </div>
-        <div class="large-4 flex flexColumn alignCenter size20">
-            <img src="assets/certificate-check.svg" alt="">
-            <p>Designs tendance pour un style unique</p>
-        </div>
-        <div class="large-4 flex flexColumn alignCenter size20">
-            <img src="assets/hourglass.svg" alt="">
-            <p>Engagement envers la durabilité et la responsabilité sociale</p>
+    <section class="avantages container gap">
+        <h2 class="size40 cGreen">Avantages</h2>
+        <div class="flex gap">
+            <div class="large-4 flex flexColumn size20">
+                <img src="assets/droplets.svg" alt="">
+                <p>Sneakers éco-sourcés fabriquées avec des matériaux durables</p>
+            </div>
+            <div class="large-4 flex flexColumn size20">
+                <img src="assets/certificate-check.svg" alt="">
+                <p>Designs tendance pour un style unique</p>
+            </div>
+            <div class="large-4 flex flexColumn size20">
+                <img src="assets/hourglass.svg" alt="">
+                <p>Engagement envers la durabilité et la responsabilité sociale</p>
+            </div>
         </div>
     </section>
 
-    <section class="products container flex spaceBetween flexColumn w100">
+    <section class="products container flex spaceBetween flexColumn w100" id="products">
         <h2 class="size40 cGreen">Produits</h2>
-        <div class="flex flexWrap" id="cardContainer"></div>
+        <div class="flex flexWrap gap" id="cardContainer"></div>
     </section>
 
-    <section class="services flex container gap" id="services"></section>
-    <section class="temoignages flex container gap" id="temoignages"></section>
+    <section class="services container">
+        <h2 class="size40 cGreen">Services</h2>
+        <div id="services" class="flex gap w100"></div>
+    </section>
+    <section class="temoignages container">
+        <h2 class="size40 cGreen">Témoignages</h2>
+        <div id="temoignages" class="flex gap w100"></div>
+    </section>
 </main>
 
 <footer class="borderT">
-   <div class="flex container g100">
-       <a href="index.html">
-           <img alt="Logo BonPied" src="assets/logo.png">
-       </a>
+   <div class="flex container g100 alignCenter">
+       <div class="w40">
+           <a href="index.html" class="selectNone">
+               <img alt="Logo BonPied" src="assets/logo.png">
+           </a>
+           <p>Nous avons des paires de chaussures pour améliorer votre style et vous rentre responsable vis-à-vis de la nature. Pour hommes et femmes.</p>
+       </div>
        <nav>
            <ul class="flex flexColumn g15">
                <li><a href="">Conditions générales d'utilisation</a></li>
@@ -79,6 +99,9 @@
            </ul>
        </nav>
    </div>
+    <div class="flex justifyCenter">
+        <p>BonPied © 2025. Tous droits réservés</p>
+    </div>
 </footer>
 
 <script defer src="script.js"></script>

@@ -1,8 +1,9 @@
 fetch('sneakers.json')
     .then(response => response.json())
     .then(data => {
+        const container = document.getElementById('cardContainer');
         data.produits.forEach(sneakers => {
-            document.getElementById('cardContainer').innerHTML += `
+            container.innerHTML += `
                 <div class="card large-4">
                     <div class="imageContainer relative">
                         <div class="descContainer absolute w100 flex justifyCenter alignCenter cWhite">
@@ -15,7 +16,7 @@ fetch('sneakers.json')
                             <p class="w50 weight500 size20">${sneakers.nom}</p>
                             <p class="weight600 size24">${sneakers.price} €</p>
                         </div>
-                        <div class="buttonProduct flex alignCenter bRadiusMax g5 bgGreen cWhite">
+                        <div class="buttonProduct flex alignCenter bRadiusMax g5 bgGreen cWhite cursorPointer selectNone" id="boutonClic">
                             <img alt="" src="assets/plus.svg">
                             <p>Ajouter au panier</p>
                         </div>
@@ -24,21 +25,26 @@ fetch('sneakers.json')
             `;
         });
 
-        // Ajout événements
+        let count = 0;
+        const bagCounter = document.querySelector('.nombreClics');
         const buttons = document.querySelectorAll('.buttonProduct');
+
         buttons.forEach(button => {
             button.addEventListener("click", () => {
+                count++;
+                bagCounter.textContent = count;
+
                 button.innerHTML = `
-                    <p>Ajouté au panier</p>
                     <img alt="" src="assets/check.svg">
+                    <p>Ajouté au panier</p>
                 `;
             });
         });
 
-        data.services.forEach(sneakers => {
+data.services.forEach(sneakers => {
             document.getElementById('services').innerHTML += `
-                <div class="large-4">
-            <h3 class="size28 weight600 cGreen">${sneakers.nom}</h3>
+                <div class="servicesCard large-4">
+            <h3 class="size28 weight600 cBlack">${sneakers.nom}</h3>
             <p class="size20">${sneakers.description}</p>
         </div>
             `;
@@ -46,18 +52,39 @@ fetch('sneakers.json')
 
 
         data.temoignages.forEach(sneakers => {
+            const etoilesPleines = '★'.repeat(sneakers.note);
+            const etoilesVides = '☆'.repeat(5 - sneakers.note);
+            const etoiles = etoilesPleines + etoilesVides;
+
             document.getElementById('temoignages').innerHTML += `
                 <div class="temoignageCard large-4 flex flexColumn g10">
-                    <div class="flex spaceBetween alignEnd">
-                        <p class="size24 weight600 cGreen">${sneakers.prenom}</p>
+                    <div class="flex spaceBetween alignCenter">
+                        <p class="size24 weight600">${sneakers.prenom}</p>
                         <div class="flex">
-                            <img src="assets/star.svg" alt=""/>
-                            <p class="note size20 weight600">${sneakers.note}/5</p>
+                            <p class="note weight600 size24">${etoiles}</p>
                         </div>
                     </div>
-                    <p class="typeExperience size24">${sneakers.typeExperience}</p>
-                    <p class="size20">${sneakers.commentaire}</p>
+                    <p class="size20">${sneakers.typeExperience}</p>
+                    <p>${sneakers.commentaire}</p>
                 </div>
             `;
         });
     });
+
+let clics = 0;
+let nombreClics = document.getElementById("nombreClics")
+let boutonClic = document.getElementById("boutonClic")
+
+function comptage() {
+    clics++;
+    nombreClics.textContent = clics;
+}
+
+boutonClic.addEventListener("click", comptage);
+
+
+let croix = document.getElementById("removeBanderolle");
+
+croix.addEventListener("click", () => {
+    console.log("Croix cliquée !");
+})
